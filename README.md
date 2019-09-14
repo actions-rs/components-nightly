@@ -1,5 +1,7 @@
 # `components-nightly` Action
 
+[![Gitter](https://badges.gitter.im/actions-rs/community.svg)](https://gitter.im/actions-rs/community)
+
 This GitHub Action finds the latest Rust nightly build
 with the requested [component](https://rust-lang.github.io/rustup-components-history/) available.
 
