@@ -1,0 +1,21 @@
+name: 'rustup components nightly'
+description: 'Find most recent nightly build with the requested component available'
+author: 'actions-rs team'
+branding:
+  icon: play-circle
+  color: black
+inputs:
+  target:
+    description: Rust target triple
+    required: true
+  component:
+    description: Component to search
+    required: true
+
+output:
+  toolchain:
+    description: Nightly toolchain name
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
