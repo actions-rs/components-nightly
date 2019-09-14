@@ -26,14 +26,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - id: components
+      - id: component
         uses: actions-rs/components-nightly@master
         with:
           target: x86_64-unknown-linux-gnu
           component: clippy
       - uses: actions-rs/toolchain@master
         with:
-            toolchain: ${{ steps.components.toolchain }}
+            toolchain: ${{ steps.component.outputs.toolchain }}
             override: true
 ```
 
