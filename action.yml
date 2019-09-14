@@ -15,7 +15,8 @@ inputs:
 output:
   toolchain:
     description: Nightly toolchain name
-
+  command:
+    description: Cargo command to call this component
 runs:
   using: 'node12'
   main: 'dist/index.js'

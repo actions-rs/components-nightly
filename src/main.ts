@@ -6,6 +6,11 @@ import * as io from '@actions/io';
 
 import * as args from './args';
 
+// Mapping between component and cargo command to call it
+const COMPONENT_COMMANDS: Map<string, string> = new Map([
+    ["rustfmt", "fmt"],
+]);
+
 async function get(target: string, component: string): Promise<string> {
     const url = `https://rust-lang.github.io/rustup-components-history/${target}/${component}`;
 
@@ -39,8 +44,10 @@ async function run() {
     try {
         const date = await get(opts.target, opts.component);
         const toolchain = `nightly-${date}-${opts.target}`;
+        const cargoCommand = COMPONENT_COMMANDS.get(opts.component) || opts.component;
 
         core.setOutput('toolchain', toolchain);
+        core.setOutput('command', cargoCommand);
     } catch (error) {
         core.setFailed(error.message);
         throw error;

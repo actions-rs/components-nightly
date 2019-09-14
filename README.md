@@ -46,3 +46,4 @@ jobs:
 ## Outputs
 
 * `toolchain`: Nightly toolchain name, ex. `nightly-2019-09-13-x86_64-unknown-linux-gnu`
+* `command`: Cargo command to call this component (useful when you need to install `rustfmt` but call the `cargo fmt` then)
