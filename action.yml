@@ -1,4 +1,4 @@
-name: 'rustup components nightly'
+name: 'rust-components-nightly'
 description: 'Find most recent nightly build with the requested component available'
 author: 'actions-rs team'
 branding:

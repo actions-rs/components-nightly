@@ -1,6 +1,6 @@
 {
-    "name": "rustup-components-nightly",
-    "version": "0.1.0",
+    "name": "rust-components-nightly",
+    "version": "1.0.0",
     "private": false,
     "description": "Find most recent nightly build with the requested component available",
     "main": "lib/main.js",

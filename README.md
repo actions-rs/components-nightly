@@ -1,9 +1,12 @@
 # `components-nightly` Action
 
+![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)
 [![Gitter](https://badges.gitter.im/actions-rs/community.svg)](https://gitter.im/actions-rs/community)
 
 This GitHub Action finds the latest Rust nightly build
 with the requested [component](https://rust-lang.github.io/rustup-components-history/) available.
+
+## Background
 
 Ever had the problem when your nightly build breaks because today `nightly`
 does not has the `clippy` available? With this Action you can find the most recent
@@ -29,11 +32,11 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - id: component
-        uses: actions-rs/components-nightly@master
+        uses: actions-rs/components-nightly@v1
         with:
           target: x86_64-unknown-linux-gnu
           component: clippy
-      - uses: actions-rs/toolchain@master
+      - uses: actions-rs/toolchain@v1
         with:
             toolchain: ${{ steps.component.outputs.toolchain }}
             override: true
