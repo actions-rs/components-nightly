@@ -1,4 +1,4 @@
-# `components-nightly` Action
+# `rust-components-nightly` Action
 
 ![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)
 [![Gitter](https://badges.gitter.im/actions-rs/community.svg)](https://gitter.im/actions-rs/community)
@@ -42,9 +42,11 @@ jobs:
             override: true
 ```
 
+See [additional recipes here](https://github.com/actions-rs/meta).
+
 ## Inputs
 
-* `target` (*required*): Rust targe triple
+* `target` (*required*): Rust target triple
 * `component` (*required*): Component name to search \
     (see [components list](https://rust-lang.github.io/rustup-components-history/) for available options)
 
