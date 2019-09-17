@@ -33,25 +33,22 @@ async function get(target: string, component: string): Promise<string> {
 }
 
 async function run() {
-    let opts;
+    const opts = args.components_args();
+
+    const date = await get(opts.target, opts.component);
+    const toolchain = `nightly-${date}-${opts.target}`;
+    const cargoCommand = COMPONENT_COMMANDS.get(opts.component) || opts.component;
+
+    core.setOutput('toolchain', toolchain);
+    core.setOutput('command', cargoCommand);
+}
+
+async function main() {
     try {
-        opts = args.components_args();
+        await run();
     } catch (error) {
         core.setFailed(error.message);
-        throw error;
-    }
-
-    try {
-        const date = await get(opts.target, opts.component);
-        const toolchain = `nightly-${date}-${opts.target}`;
-        const cargoCommand = COMPONENT_COMMANDS.get(opts.component) || opts.component;
-
-        core.setOutput('toolchain', toolchain);
-        core.setOutput('command', cargoCommand);
-    } catch (error) {
-        core.setFailed(error.message);
-        throw error;
     }
 }
 
-run();
+main();

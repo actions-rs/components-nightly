@@ -1,5 +1,7 @@
 import * as core from '@actions/core';
 
+import * as rustup from './rustup';
+
 // Workaround for a GH bug: https://github.com/actions/toolkit/issues/127
 //
 // For input `all-features: true` it will generate the `INPUT_ALL-FEATURES: true`
@@ -22,8 +24,13 @@ export interface ComponentsOptions {
 }
 
 export function components_args(): ComponentsOptions {
+    let target = getInput('target');
+    if (target.length == 0) {
+        target = rustup.getDefaultTargetTriple();
+        core.debug(`Input "target" is not set, using ${target} as a default`);
+    }
     return {
-        target: getInput('target', {required: true}),
+        target: target,
         component: getInput('component', {required: true})
     };
 }

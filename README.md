@@ -34,7 +34,6 @@ jobs:
       - id: component
         uses: actions-rs/components-nightly@v1
         with:
-          target: x86_64-unknown-linux-gnu
           component: clippy
       - uses: actions-rs/toolchain@v1
         with:
@@ -46,11 +45,27 @@ See [additional recipes here](https://github.com/actions-rs/meta).
 
 ## Inputs
 
-* `target` (*required*): Rust target triple
 * `component` (*required*): Component name to search \
     (see [components list](https://rust-lang.github.io/rustup-components-history/) for available options)
+* `target`: Rust target triple (if omitted, default for host will be used, see below)
+
+### Target input
+
+**NOTE**: This feature is not released yet, latest published version (`v1.0.0`)
+will fail if `target` input is omitted.
+
+If the `target` input is omitted, default target triple for the current host will be used:
+
+| Virtual environment               | Target triple              |
+| --------------------------------- | -------------------------- |
+| `windows-latest` / `windows-2019` | `x86_64-pc-windows-msvc`   |
+| `windows-2016`                    | `x86_64-pc-windows-msvc`   |
+| `ubuntu-latest` / `ubuntu-18.04`  | `x86_64-unknown-linux-gnu` |
+| `ubuntu-16.04`                    | `x86_64-unknown-linux-gnu` |
+| `macOS-latest` / `macOS-10.14`    | `x86_64-apple-darwin`      |
 
 ## Outputs
 
 * `toolchain`: Nightly toolchain name, ex. `nightly-2019-09-13-x86_64-unknown-linux-gnu`
-* `command`: Cargo command to call this component (useful when you need to install `rustfmt` but call the `cargo fmt` then)
+* `command`: Cargo command to call this component
+    (might be useful when you need to install `rustfmt` but call the `cargo fmt` then)

@@ -7,7 +7,7 @@ branding:
 inputs:
   target:
     description: Rust target triple
-    required: true
+    required: false
   component:
     description: Component to search
     required: true
