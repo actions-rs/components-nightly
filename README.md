@@ -51,9 +51,6 @@ See [additional recipes here](https://github.com/actions-rs/meta).
 
 ### Target input
 
-**NOTE**: This feature is not released yet, latest published version (`v1.0.0`)
-will fail if `target` input is omitted.
-
 If the `target` input is omitted, default target triple for the current host will be used:
 
 | Virtual environment               | Target triple              |
