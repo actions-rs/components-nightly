@@ -45,9 +45,10 @@ See [additional recipes here](https://github.com/actions-rs/meta).
 
 ## Inputs
 
-* `component` (*required*): Component name to search \
-    (see [components list](https://rust-lang.github.io/rustup-components-history/) for available options)
-* `target`: Rust target triple (if omitted, default for host will be used, see below)
+| Name        | Required | Description                                                                            | Type   | Default          |
+| ------------| :------: | ---------------------------------------------------------------------------------------| ------ | -----------------|
+| `component` | ✓        | [Component](https://rust-lang.github.io/rustup-components-history/) name to search for | string |                  |
+| `target`    |          | Rust target triple (see [Target input](#target-input) section below)                   | string | *host-dependant* |
 
 ### Target input
 
@@ -63,6 +64,7 @@ If the `target` input is omitted, default target triple for the current host wil
 
 ## Outputs
 
-* `toolchain`: Nightly toolchain name, ex. `nightly-2019-09-13-x86_64-unknown-linux-gnu`
-* `command`: Cargo command to call this component
-    (might be useful when you need to install `rustfmt` but call the `cargo fmt` then)
+| Name        | Description                                                                                                                 | Type   |
+| ------------| ----------------------------------------------------------------------------------------------------------------------------| ------ |
+| `toolchain` | Most recent nightly toolchain name with the requested component available,ex. `nightly-2019-09-13-x86_64-unknown-linux-gnu` | string |
+| `command`   | Cargo command to call this component (might be useful when you need to install `rustfmt` but call the `cargo fmt` then)     | string |
