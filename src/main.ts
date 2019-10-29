@@ -33,6 +33,7 @@ async function get(target: string, component: string): Promise<string> {
 }
 
 async function run() {
+    core.warning('This Action is deprecated, see https://github.com/actions-rs/components-nightly#deprecation-notice');
     const opts = args.components_args();
 
     const date = await get(opts.target, opts.component);
