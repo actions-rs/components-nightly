@@ -6,6 +6,45 @@
 This GitHub Action finds the latest Rust nightly build
 with the requested [component](https://rust-lang.github.io/rustup-components-history/) available.
 
+## Deprecation notice
+
+Since [`actions-rs/toolchain`](https://github.com/actions-rs/toolchain#components)
+Action is now utilizes `rustup` ability to find the most recent `nightly` build
+with **multiple** components available, this Action is deprecated now.\
+Consider removing it from your workflows and use [`actions-rs/toolchain`](https://github.com/actions-rs/toolchain) directly.
+
+For example, instead of
+
+```yaml
+steps:
+  - uses: actions/checkout@master
+  - id: component
+    uses: actions-rs/components-nightly@v1
+    with:
+      component: clippy
+  - uses: actions-rs/toolchain@v1
+    with:
+        toolchain: ${{ steps.component.outputs.toolchain }}
+        override: true
+```
+
+you can now tune `actions-rs/toolchain` action:
+
+```yaml
+steps:
+  - uses: actions/checkout@master
+  - uses: actions-rs/toolchain@v1
+    with:
+        toolchain: nightly
+        components: clippy
+        override: true
+```
+
+See [Components](https://github.com/actions-rs/toolchain#components) section for more.
+
+This Action will not be updated anymore, but will be leaved as is
+in order not to break workflows, which are using it already.
+
 ## Background
 
 Ever had the problem when your nightly build breaks because today `nightly`
