@@ -32,7 +32,7 @@
     },
     "dependencies": {
         "@actions/core": "^1.1.1",
-        "@actions/exec": "^1.0.1",
+        "@actions/exec": "^1.0.3",
         "@actions/io": "^1.0.1"
     },
     "devDependencies": {
